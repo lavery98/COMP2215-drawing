@@ -182,7 +182,37 @@ void stroke_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t c
 
 void stroke_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t r, uint16_t col)
 {
+  stroke_rectangle(x, y, w, h, col);
 
+  stroke_rectangle(x, y, r, r, display.background);
+  stroke_rectangle(x+w-r, y, r, r, display.background);
+  stroke_rectangle(x, y+h-r, r, r, display.background);
+  stroke_rectangle(x+w-r, y+h-r, r, r, display.background);
+
+  uint16_t *xs = create_circle(r);
+
+  uint16_t i;
+  for(i = 0; i<r; i++)
+  {
+    /* Top left */
+    draw_pixel((x+r) - xs[i], (y+r) - i, col);
+    draw_pixel((x+r) - i, (y+r) - xs[i], col);
+
+    /* Top right */
+    draw_pixel((x+w-r) + xs[i], (y+r) - i, col);
+    draw_pixel((x+w-r) + i, (y+r) - xs[i], col);
+
+    /* Bottom left */
+    draw_pixel((x+r) - xs[i], (y+w-r) + i, col);
+    draw_pixel((x+r) - i, (y+w-r) + xs[i], col);
+
+    /* Bottom right */
+    draw_pixel((x+w-r) + xs[i], (y+h-r) + i, col);
+    draw_pixel((x+w-r) + i, (y+h-r) + xs[i], col);
+  }
+
+  if(xs)
+    free(xs);
 }
 
 void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
