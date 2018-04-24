@@ -215,6 +215,48 @@ void stroke_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, ui
     free(xs);
 }
 
+void fill_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t r, uint16_t col)
+{
+  rectangle rec = {x, x+w, y, y+h};
+  fill_rectangle(rec, col);
+
+  rec.left = x;
+  rec.right = x+r;
+  rec.top = y;
+  rec.bottom = y+r;
+  fill_rectangle(rec, display.background);
+  rec.left = x+w-r;
+  rec.right = x+w;
+  fill_rectangle(rec, display.background);
+  rec.top = y+h-r;
+  rec.bottom = y+h;
+  fill_rectangle(rec, display.background);
+  rec.left = x;
+  rec.right = x+r;
+  fill_rectangle(rec, display.background);
+
+  uint16_t *xs = create_circle(r);
+
+  uint16_t i;
+  for(i = 0; i<r; i++)
+  {
+    /* Top left */
+    stroke_line((x+r) - xs[i], (y+r) - i, (x+r) + xs[i], (y+r) - i, col);
+
+    /* Top right */
+    stroke_line((x+w-r) + xs[i], (y+r) - i, (x+w-r) - xs[i], (y+r) - i, col);
+
+    /* Bottom left */
+    stroke_line((x+r) - i, (y+w-r) + xs[i], (x+r) - i, (y+w-r) - xs[i], col);
+
+    /* Bottom right */
+    stroke_line((x+w-r) + i, (y+w-r) - xs[i], (x+w-r) + i, (y+w-r) + xs[i], col);
+  }
+
+  if(xs)
+    free(xs);
+}
+
 void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
 {
   uint16_t *xs = create_circle(r);

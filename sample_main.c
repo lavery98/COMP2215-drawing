@@ -19,7 +19,7 @@ void main(void) {
 
   stroke_line(200, 100, 0, 0, WHITE);*/
 
-  stroke_rounded_rectangle(100, 100, 100, 100, 20, BLUE);
+  fill_rounded_rectangle(100, 100, 100, 100, 20, BLUE);
 
   for(;;) {}
 }
