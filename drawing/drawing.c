@@ -180,6 +180,11 @@ void stroke_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t c
   }
 }
 
+void stroke_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t r, uint16_t col)
+{
+
+}
+
 void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
 {
   uint16_t *xs = create_circle(r);
