@@ -203,8 +203,8 @@ void stroke_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, ui
     draw_pixel((x+w-r) + i, (y+r) - xs[i], col);
 
     /* Bottom left */
-    draw_pixel((x+r) - xs[i], (y+w-r) + i, col);
-    draw_pixel((x+r) - i, (y+w-r) + xs[i], col);
+    draw_pixel((x+r) - xs[i], (y+h-r) + i, col);
+    draw_pixel((x+r) - i, (y+h-r) + xs[i], col);
 
     /* Bottom right */
     draw_pixel((x+w-r) + xs[i], (y+h-r) + i, col);
@@ -247,10 +247,10 @@ void fill_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
     stroke_line((x+w-r) + xs[i], (y+r) - i, (x+w-r) - xs[i], (y+r) - i, col);
 
     /* Bottom left */
-    stroke_line((x+r) - i, (y+w-r) + xs[i], (x+r) - i, (y+w-r) - xs[i], col);
+    stroke_line((x+r) - i, (y+w-r) + xs[i], (x+r) - i, (y+h-r) - xs[i], col);
 
     /* Bottom right */
-    stroke_line((x+w-r) + i, (y+w-r) - xs[i], (x+w-r) + i, (y+w-r) + xs[i], col);
+    stroke_line((x+w-r) + i, (y+w-r) - xs[i], (x+w-r) + i, (y+h-r) + xs[i], col);
   }
 
   if(xs)
