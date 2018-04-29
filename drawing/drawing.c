@@ -247,10 +247,10 @@ void fill_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
     stroke_line((x+w-r) + xs[i], (y+r) - i, (x+w-r) - xs[i], (y+r) - i, col);
 
     /* Bottom left */
-    stroke_line((x+r) - i, (y+w-r) + xs[i], (x+r) - i, (y+h-r) - xs[i], col);
+    stroke_line((x+r) - i, (y+h-r) + xs[i], (x+r) - i, (y+h-r) - xs[i], col);
 
     /* Bottom right */
-    stroke_line((x+w-r) + i, (y+w-r) - xs[i], (x+w-r) + i, (y+h-r) + xs[i], col);
+    stroke_line((x+w-r) + i, (y+h-r) - xs[i], (x+w-r) + i, (y+h-r) + xs[i], col);
   }
 
   if(xs)
