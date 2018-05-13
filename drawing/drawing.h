@@ -85,3 +85,7 @@ void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col);
  *          col - colour of circle
  */
 void fill_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col);
+
+void stroke_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col);
+
+void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col);

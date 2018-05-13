@@ -8,7 +8,7 @@ void main(void) {
 
   init_lcd();
 
-  stroke_rectangle(0, 0, 100, 100, BLUE);
+  /*stroke_rectangle(0, 0, 100, 100, BLUE);
 
   fill_circle(50, 50, 60, RED);
   stroke_circle(50, 50, 60, GREEN);
@@ -18,8 +18,12 @@ void main(void) {
   stroke_line(100, 100, 100, 200, RED);
 
   stroke_line(200, 100, 0, 0, WHITE);
-  
-  fill_rounded_rectangle(100, 100, 100, 100, 20, BLUE);
+
+  fill_rounded_rectangle(100, 100, 100, 100, 20, BLUE);*/
+
+  uint16_t xPoints[] = {100, 200, 150, 100};
+  uint16_t yPoints[] = {100, 100, 50, 100};
+  fill_polygon(xPoints, yPoints, 4, BLUE);
 
   for(;;) {}
 }

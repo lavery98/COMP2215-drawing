@@ -361,3 +361,68 @@ uint16_t* create_circle(uint16_t r)
 
   return xs;
 }
+
+void stroke_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col)
+{
+  uint16_t i;
+  for(i = 0; i < size - 1; i++)
+  {
+    stroke_line(xPoints[i], yPoints[i], xPoints[i+1], yPoints[i+1], col);
+  }
+}
+
+void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col)
+{
+  stroke_polygon(xPoints, yPoints, size, col);
+
+  uint16_t i, k, y, temp;
+  int16_t dy, dx;
+  uint16_t xi[size];
+  float slope[size];
+  for(i = 0; i < size - 1; i++)
+  {
+    dy = yPoints[i+1] - yPoints[i];
+    dx = xPoints[i+1] - xPoints[i];
+
+    if(dy == 0)
+      slope[i] = 1.0;
+    if(dx == 0)
+      slope[i] = 0.0;
+
+    if((dy!=0)&&(dx!=0))
+    {
+      slope[i] = (float) dx/dy;
+    }
+  }
+
+  for(y = 0; y < LCDHEIGHT; y++)
+  {
+    k = 0;
+    for(i = 0; i < size - 1; i++)
+    {
+      if(((yPoints[i] <= y)&&(yPoints[i+1] > y)) || ((yPoints[i] > y)&&(yPoints[i+1] <= y)))
+      {
+        xi[k]=(uint16_t)(xPoints[i]+slope[i]*(y-yPoints[i]));
+        k++;
+      }
+    }
+
+    if(k > 0)
+    {
+      for(i = 0; i < k - 1; i++)
+      {
+        if(xi[i]>xi[i+1])
+        {
+          temp = xi[i];
+          xi[i] = xi[i+1];
+          xi[i+1] = temp;
+        }
+      }
+    }
+
+    for(i = 0; i < k; i+=2)
+    {
+      stroke_line(xi[i], y, xi[i+1], y, col);
+    }
+  }
+}
