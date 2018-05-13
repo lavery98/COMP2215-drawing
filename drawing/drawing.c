@@ -395,7 +395,7 @@ void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t 
     }
   }
 
-  for(y = 0; y < LCDHEIGHT; y++)
+  for(y = 0; y < display.height; y++)
   {
     k = 0;
     for(i = 0; i < size - 1; i++)

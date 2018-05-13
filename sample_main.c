@@ -21,9 +21,9 @@ void main(void) {
 
   fill_rounded_rectangle(100, 100, 100, 100, 20, BLUE);*/
 
-  uint16_t xPoints[] = {100, 200, 150, 100};
-  uint16_t yPoints[] = {100, 100, 50, 100};
-  fill_polygon(xPoints, yPoints, 4, BLUE);
+  uint16_t xPoints[] = {25, 25, 50, 50, 125, 125, 50, 50, 125, 125, 25};
+  uint16_t yPoints[] = {25, 175, 175, 100, 100, 75, 75, 50, 50, 25, 25};
+  fill_polygon(xPoints, yPoints, 11, BLUE);
 
   for(;;) {}
 }
