@@ -86,6 +86,22 @@ void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col);
  */
 void fill_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col);
 
+/*
+ *  Draws the outline of a polygon using the given x and y points in the given colour
+ *
+ *  Params: xPoints - array of the x points for the polygon
+ *          yPoints - array of the y points for the polygon
+ *          size    - size of the x and y point arrays
+ *          col     - colour of outline
+ */
 void stroke_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col);
 
+/*
+ *  Draws a filled polygon using the given x and y points in the given colour
+ *
+ *  Params: xPoints - array of the x points for the polygon
+ *          yPoints - array of the y points for the polygon
+ *          size    - size of the x and y point arrays
+ *          col     - colour of polygon
+ */
 void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t col);

@@ -191,6 +191,9 @@ void stroke_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, ui
 
   uint16_t *xs = create_circle(r);
 
+  if(!xs)
+    return;
+
   uint16_t i;
   for(i = 0; i<r; i++)
   {
@@ -237,6 +240,9 @@ void fill_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
 
   uint16_t *xs = create_circle(r);
 
+  if(!xs)
+    return;
+
   uint16_t i;
   for(i = 0; i<r; i++)
   {
@@ -260,6 +266,9 @@ void fill_rounded_rectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
 void stroke_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
 {
   uint16_t *xs = create_circle(r);
+
+  if(!xs)
+    return;
 
   uint16_t y;
   for(y = 0; y<r; y++)
@@ -310,6 +319,9 @@ void fill_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
 {
   uint16_t *xs = create_circle(r);
 
+  if(!xs)
+    return;
+
   uint16_t y;
   for(y = 0; y<r; y++)
   {
@@ -332,6 +344,9 @@ void fill_circle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t col)
 uint16_t* create_circle(uint16_t r)
 {
   uint16_t *xs = malloc(r*sizeof(uint16_t));
+
+  if(!xs)
+    return NULL;
 
   int x = r - 1;
   int y = 0;
@@ -375,6 +390,7 @@ void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t 
 {
   stroke_polygon(xPoints, yPoints, size, col);
 
+  /* Scan line fill */
   uint16_t i, k, y, temp;
   int16_t dy, dx;
   uint16_t xi[size];
@@ -395,6 +411,7 @@ void fill_polygon(uint16_t *xPoints, uint16_t *yPoints, uint16_t size, uint16_t 
     }
   }
 
+  /* TODO: could use min and max y */
   for(y = 0; y < display.height; y++)
   {
     k = 0;
