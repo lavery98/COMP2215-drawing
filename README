@@ -13,3 +13,5 @@ This library supports drawing the outline and/or filling the following shapes.
 - Rounded Rectangle
 - Circle
 - Any polygon
+
+The lcd library used is created by Steve Gunn and is licensed under the Creative Commons Attribution License.
