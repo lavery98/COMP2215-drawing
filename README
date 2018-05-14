@@ -1,0 +1,15 @@
+La Fortuna Drawing Library
+By Ashley Lavery
+
+To use this library you need to copy the lcd and drawing directories into your project.
+Then include the drawing.h header file anywhere you want to use the library functions.
+All the explanations functions for the library can be found in the header file.
+You can find an example of how to use this library in the sample_main.c file.
+
+This library supports drawing the outline and/or filling the following shapes.
+- Pixel
+- Line
+- Rectangle
+- Rounded Rectangle
+- Circle
+- Any polygon
